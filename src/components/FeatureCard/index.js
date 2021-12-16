@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Features = (props) => {
   const { featureDetails } = props;
   const { featureIcon, featureHeading, featureDescription } = featureDetails;
-  console.log(featureIcon);
   return (
     <li className="home-feature-container">
       <FontAwesomeIcon icon={featureIcon} className="home-feature-icon" />

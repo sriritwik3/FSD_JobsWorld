@@ -37,14 +37,12 @@ class JobItemDetails extends Component {
       skills: fetchedData.skills,
       workExperience: fetchedData.work_experience,
     };
-    //console.log(updatedData);
     this.setState({ jobDetails: updatedData });
   };
 
   render() {
     const { jobDetails } = this.state;
     return <JobItem jobDetails={jobDetails} />;
-    // return <h1>Job Details</h1>;
   }
 }
 

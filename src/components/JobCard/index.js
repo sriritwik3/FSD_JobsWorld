@@ -55,7 +55,9 @@ const JobCard = (props) => {
         </div>
         <div className="job-card-description-container">
           {descriptionIcon}
-          <p className="job-card-description">{jobDescription}</p>
+          <p className="job-card-description">
+            {jobDescription.slice(0, 120)} ...
+          </p>
         </div>
         <div className="job-card-footer">
           <p className="job-card-posted">{posted}</p>

@@ -42,8 +42,8 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <ProtectedRoute exact path="/postjobs" component={PostJobForm} />
         <ProtectedRoute exact path="/profile" component={Profile} />
-        <ProtectedRoute exact path="/reset" component={ResetPassword} />
-        <Route exact path="/uploadresume" component={Resume} />
+        <Route exact path="/reset" component={ResetPassword} />
+        <ProtectedRoute exact path="/uploadresume" component={Resume} />
         <Route exact path="/jobs" component={AllJobsSection} />
         <Route exact path="/jobs/:id" component={JobItemDetails} />
         <Route exact path="/register" component={SignUp} />

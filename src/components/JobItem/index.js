@@ -27,7 +27,6 @@ const JobDetailedView = (props) => {
     companyDescription,
   } = jobDetails;
 
-  //console.log(skills);
   const contractIcon = <FontAwesomeIcon icon={faBusinessTime} />;
   const locationIcon = <FontAwesomeIcon icon={faMapMarkerAlt} />;
   const rupeeIcon = <FontAwesomeIcon icon={faRupeeSign} />;

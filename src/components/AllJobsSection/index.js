@@ -1,73 +1,9 @@
+import "./index.css";
 import { Component } from "react";
 
 import FiltersGroup from "../FiltersGroup";
 import JobCard from "../JobCard/";
 import JobsHeader from "../JobsHeader";
-
-import "./index.css";
-
-// const jobsArray = [
-//   {
-//     jobId: 1,
-//     role: "Territory Sales Manager - Hyderabad",
-//     company: "Reliance Industries Ltd",
-//     reviews: 7999,
-//     salary: 1200000,
-//     description:
-//       "TSM Retailer on-boarding, order taking & sales generation Cash Collection ...",
-//     location: "Hyderabad",
-//     contract: "6-11 years",
-//     posted: "3 days ago",
-//   },
-//   {
-//     jobId: 2,
-//     role: "Territory Sales Manager - Hyderabad",
-//     company: "Reliance Industries Ltd",
-//     reviews: 7999,
-//     salary: 1200000,
-//     description:
-//       "TSM Retailer on-boarding, order taking & sales generation Cash Collection ...",
-//     location: "Hyderabad",
-//     contract: "6-11 years",
-//     posted: "3 days ago",
-//   },
-//   {
-//     jobId: 3,
-//     role: "Territory Sales Manager - Hyderabad",
-//     company: "Reliance Industries Ltd",
-//     reviews: 7999,
-//     salary: 1200000,
-//     description:
-//       "TSM Retailer on-boarding, order taking & sales generation Cash Collection ...",
-//     location: "Hyderabad",
-//     contract: "6-11 years",
-//     posted: "3 days ago",
-//   },
-//   {
-//     jobId: 4,
-//     role: "Territory Sales Manager - Hyderabad",
-//     company: "Reliance Industries Ltd",
-//     reviews: 7999,
-//     salary: 1200000,
-//     description:
-//       "TSM Retailer on-boarding, order taking & sales generation Cash Collection ...",
-//     location: "Hyderabad",
-//     contract: "6-11 years",
-//     posted: "3 days ago",
-//   },
-//   {
-//     jobId: 5,
-//     role: "Territory Sales Manager - Hyderabad",
-//     company: "Reliance Industries Ltd",
-//     reviews: 7999,
-//     salary: 1200000,
-//     description:
-//       "TSM Retailer on-boarding, order taking & sales generation Cash Collection ...",
-//     location: "Hyderabad",
-//     contract: "6-11 years",
-//     posted: "3 days ago",
-//   },
-// ];
 
 const sortByOptions = [
   {
@@ -378,7 +314,6 @@ class Jobs extends Component {
 
   render() {
     const {
-      activeOptionId,
       searchInput,
       activeSalaryId,
       activeLocationId,
@@ -386,19 +321,7 @@ class Jobs extends Component {
       activeSkillId,
       activeEducationLevelId,
       activeCompanyId,
-      jobs,
     } = this.state;
-    console.log(
-      activeOptionId,
-      activeSalaryId,
-      searchInput,
-      activeLocationId,
-      activeJobTypeId,
-      activeSkillId,
-      activeEducationLevelId,
-      activeCompanyId,
-      jobs
-    );
     return (
       <div className="all-jobs-section">
         <FiltersGroup

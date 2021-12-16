@@ -83,39 +83,51 @@ function Resume(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     setFormErrors(validate(values));
-    console.log(formErrors);
 
     setIsSubmit(true);
   };
 
-  useEffect(() => {
+  useEffect(async () => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      // props.addResumeHandler(values)
-      setValues({
-        ...values,
-        firstName: "",
-        lastName: "",
-        currentCity: "",
-        postalCode: "",
-        email: "",
-        phone: "",
-        degree: "",
-        fieldOfStudy: "",
-        college: "",
-        year: "",
-        jobTitle: "",
-        company: "",
-        jobCity: "",
-        jobYear: "",
-        jobDesc: "",
-        skills: {
-          c: false,
-          cpp: false,
-          python: false,
-          java: false,
+      const options = {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: {
+          "Content-type": "application/json",
         },
-      });
-      // props.history.push("/Resumes");
+      };
+      const response = await fetch("http://localhost:3004/resumes", options);
+      // setValues({
+      //   ...values,
+      //   firstName: "",
+      //   lastName: "",
+      //   currentCity: "",
+      //   postalCode: "",
+      //   email: "",
+      //   phone: "",
+      //   degree: "",
+      //   fieldOfStudy: "",
+      //   college: "",
+      //   year: "",
+      //   jobTitle: "",
+      //   company: "",
+      //   jobCity: "",
+      //   jobYear: "",
+      //   jobDesc: "",
+      //   skills: {
+      //     c: false,
+      //     cpp: false,
+      //     python: false,
+      //     java: false,
+      //   },
+      // });
+      if (response.ok === true) {
+        const { history } = props;
+        alert(
+          "Resume submitted successfully, You will be redirected to home page..."
+        );
+        history.push("/");
+      }
     }
   }, [formErrors]);
 
@@ -123,54 +135,54 @@ function Resume(props) {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!values.firstName) {
-      errors.firstName = "First Name is required";
+      errors.firstName = "*first name is required";
     }
     if (!values.lastName) {
-      errors.lastName = "Last Name is required";
+      errors.lastName = "*last name is required";
     }
     if (!values.currentCity) {
-      errors.currentCity = "current city is required";
+      errors.currentCity = "*current city is required";
     }
     if (!values.postalCode) {
-      errors.postalCode = "Pincode is required";
+      errors.postalCode = "*pincode is required";
     }
     if (!values.firstName) {
-      errors.firstName = "First Name is required";
+      errors.firstName = "*first name is required";
     }
     if (!values.email) {
-      errors.email = "Email is required";
+      errors.email = "*email is required";
     } else if (!regex.test(values.email)) {
-      errors.email = "Required a valid email format";
+      errors.email = "*required a valid email format";
     }
     if (!values.phone) {
-      errors.phone = "Contact number is required";
+      errors.phone = "*contact number is required";
     }
     if (!values.degree) {
-      errors.degree = "Degree is required";
+      errors.degree = "*degree is required";
     }
     if (!values.fieldOfStudy) {
-      errors.fieldOfStudy = "Field of study is required";
+      errors.fieldOfStudy = "*field of study is required";
     }
     if (!values.college) {
-      errors.college = "College Name is required";
+      errors.college = "*college name is required";
     }
     if (!values.year) {
-      errors.year = "Year of study is required";
+      errors.year = "*year of study is required";
     }
     if (!values.jobTitle) {
-      errors.jobTitle = "Job Title is required";
+      errors.jobTitle = "*job title is required";
     }
     if (!values.company) {
-      errors.company = "Company Name is required";
+      errors.company = "*company name is required";
     }
     if (!values.jobCity) {
-      errors.jobCity = "Job City is required";
+      errors.jobCity = "*job city is required";
     }
     if (!values.jobYear) {
-      errors.jobYear = "Job Year is required";
+      errors.jobYear = "*job year is required";
     }
     if (!values.jobDesc) {
-      errors.jobDesc = "Description about job is required ";
+      errors.jobDesc = "*description about job is required";
     }
     return errors;
   };

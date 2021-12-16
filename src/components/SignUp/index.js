@@ -1,3 +1,4 @@
+import "./index.css";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
@@ -7,7 +8,6 @@ import {
   signInWithGoogle,
 } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import "./Signup.css";
 
 function Signup() {
   const [isContainerActive, setIsContainerActive] = useState(true);

@@ -152,11 +152,6 @@ const PostCompanyDetails = (props) => {
     decrementNumberOfPostings();
   };
 
-  //   const onChangeNumberOfPostings = (event) => {
-  //     const { changeNumberOfPostings } = props;
-  //     changeNumberOfPostings(event.target.value);
-  //   };
-
   const renderNumberOfPostingsInput = () => {
     const { numberOfPostings } = props;
 
@@ -183,13 +178,6 @@ const PostCompanyDetails = (props) => {
           {minusIcon}
           <p className="number-of-postings">{numberOfPostings}</p>
           {plusIcon}
-          {/* <input
-            type="number"
-            className="number-of-postings-input"
-            id="number-of-postings"
-            value={numberOfPostings}
-            onChange={onChangeNumberOfPostings}
-          /> */}
         </div>
       </>
     );

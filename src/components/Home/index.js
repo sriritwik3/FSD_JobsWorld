@@ -10,14 +10,11 @@ import {
   faCode,
   faDatabase,
   faGamepad,
-  faLaptop,
   faLaptopCode,
   faServer,
   faSitemap,
-  faUser,
   faUserShield,
 } from "@fortawesome/free-solid-svg-icons";
-import { fab } from "@fortawesome/free-brands-svg-icons";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -96,7 +93,8 @@ const renderCards = () => {
         >
           <div className="home-post-job-card-text">
             <h1 className="home-post-job-card-heading">
-              Post your job for free by filling out the job post form..
+              Fill a sample form and start your hassle-free recruitment journey
+              now!
             </h1>
             <Link to="/postjobs">
               <button type="button" className="home-page-card-button">

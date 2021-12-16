@@ -7,7 +7,7 @@ import {
   signInWithGoogle,
 } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import "./Login.css";
+import "./index.css";
 
 function Login() {
   const [isContainerActive, setIsContainerActive] = useState(false);

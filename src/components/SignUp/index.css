@@ -13,7 +13,7 @@
   flex-direction: column;
   font-family: "Montserrat", sans-serif;
   height: 100vh;
-  padding-top: 80px;
+  margin: 0 0 50px;
 }
 
 h1 {
@@ -59,6 +59,7 @@ h1 {
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
+  cursor: pointer;
 }
 
 .loginbutton:active {

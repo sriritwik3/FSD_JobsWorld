@@ -35,7 +35,7 @@ const Footer = () => {
             <Column>
               <Heading>Social Media</Heading>
               <FooterLink href="#">
-                <i className="fab fa-facebook-f">
+                <i className="fab fa-facebook">
                   <span style={{ marginLeft: "10px" }}>Facebook</span>
                 </i>
               </FooterLink>

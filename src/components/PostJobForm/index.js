@@ -326,6 +326,9 @@ class PostJobForm extends Component {
       const response = await fetch("http://localhost:3004/jobs", options);
       if (response.ok === true) {
         const { history } = this.props;
+        alert(
+          "Form submitted successfully, You will be redirected to home page..."
+        );
         history.push("/");
       }
     } else {
@@ -362,23 +365,6 @@ class PostJobForm extends Component {
       activeEducationLevelId,
       selectedSkills,
     } = this.state;
-    console.log(
-      step,
-      companyName,
-      activeRoleInHiringProcessId,
-      companyDescription,
-      companyLocation,
-      numberOfPostings,
-      jobTitle,
-      jobDescription,
-      roleCategory,
-      salary,
-      workExperience,
-      activeJobTypeId,
-      activeEducationLevelId,
-      selectedSkills
-    );
-
     return (
       <form className="job-post-form" onSubmit={this.submitForm}>
         {step === 1 ? (
