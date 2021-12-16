@@ -1,0 +1,17 @@
+POST http://localhost:3000/jobs
+Content-Type: application/json
+
+{
+    "role" : "Teacher-Hyderabad",
+    "company" : "Relianc Industries Ltd",
+    "reviews" : 7999,
+    "salary" : 1200000,
+    "description" : "TSM Retailer on-boarding, order taking & sales generation Cash Collection ...",
+    "location" : "Hyderabad",
+    "contract" : "6-11 years",
+    "posted" : "3 days ago"
+}
+
+###
+
+GET http://localhost:3000/jobs/4

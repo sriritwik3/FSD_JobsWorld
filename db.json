@@ -1,0 +1,352 @@
+{
+  "jobs": [
+    {
+      "company_name": "asdf",
+      "company_description": ".........................................................",
+      "company_location": "assdf",
+      "number_of_postings": 3,
+      "job_title": "asdf",
+      "job_description": "..................................................................",
+      "role_category": "asdf",
+      "salary": "100000",
+      "work_experience": "12",
+      "job_type": "Contract",
+      "education_level": "3",
+      "skills": [
+        2,
+        3,
+        4
+      ],
+      "id": 1
+    },
+    {
+      "company_name": "assd",
+      "company_description": "asd............................................................",
+      "company_location": "asdf",
+      "number_of_postings": 3,
+      "job_title": "asdf",
+      "job_description": ".................................................................",
+      "role_category": "asdf",
+      "salary": "100000",
+      "work_experience": "1",
+      "job_type": "FullTime",
+      "education_level": "1",
+      "skills": [
+        5,
+        4
+      ],
+      "id": 2
+    },
+    {
+      "company_name": "Atmecs Technologies",
+      "company_description": "ATMECS is a result-oriented full-service engineering and R&D organization. We are Technology Accelerators bringing in visible transformation for our clients through automation, adoption of leading-ed",
+      "company_location": "Hyderabad",
+      "number_of_postings": 10,
+      "job_title": "Senior software developer",
+      "job_description": "Sr. Software Developer contributes to all phases of the Software Development Lifecycle through the analysis, design, implementation.",
+      "role_category": "Software Development",
+      "salary": "1200000",
+      "work_experience": "3",
+      "job_type": "FullTime",
+      "education_level": "1",
+      "skills": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "id": 3
+    },
+    {
+      "company_name": "ciwejcb",
+      "company_description": " wu hjbw8ec mdijwebn mdijwenm iwjebnf w dwiuefh",
+      "company_location": "Hyderabad",
+      "number_of_postings": 3,
+      "job_title": "asdfswd ",
+      "job_description": "aswubhd nuwgd okjsduwj owj 8jm jduiwd m",
+      "role_category": "Software Development",
+      "salary": "1200000",
+      "work_experience": "3",
+      "job_type": "Fresher",
+      "education_level": "1",
+      "skills": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "id": 4
+    },
+    {
+      "company_name": "asdf",
+      "company_description": "asdf.....................................................",
+      "company_location": "asd",
+      "number_of_postings": 3,
+      "job_title": "asd",
+      "job_description": "...........................................................",
+      "role_category": "asdf",
+      "salary": "1200000",
+      "work_experience": "2",
+      "job_type": "FullTime",
+      "education_level": "1",
+      "skills": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "id": 5
+    },
+    {
+      "company_name": "asdf",
+      "company_description": "asdf/..................................................",
+      "company_location": "uywvd ",
+      "number_of_postings": 3,
+      "job_title": "asdf",
+      "job_description": "asd............../............................................",
+      "role_category": "asdf",
+      "salary": "10000000",
+      "work_experience": "1",
+      "job_type": "Contract",
+      "education_level": "Bachelor's Degree",
+      "skills": [
+        0,
+        2,
+        3
+      ],
+      "id": 6
+    },
+    {
+      "company_name": "",
+      "company_description": "",
+      "company_location": "",
+      "number_of_postings": 1,
+      "job_title": "",
+      "job_description": "",
+      "role_category": "",
+      "salary": "",
+      "work_experience": "",
+      "job_type": "FullTime",
+      "education_level": "Bachelor's Degree",
+      "skills": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "id": 7
+    },
+    {
+      "company_name": "as",
+      "company_description": "bxeyyyyyyyyyyyyyyyyyyyyyyyyyyyyeeeeeeeeeeeeeeeeee",
+      "company_location": "werd",
+      "number_of_postings": 3,
+      "job_title": "asdf",
+      "job_description": ".............................................................",
+      "role_category": "wed",
+      "salary": "100000",
+      "work_experience": "1",
+      "job_type": "Temporary",
+      "education_level": "Bachelor's Degree",
+      "skills": [
+        "Python",
+        "JavaScript"
+      ],
+      "id": 8
+    },
+    {
+      "company_name": "",
+      "company_description": "",
+      "company_location": "",
+      "number_of_postings": 1,
+      "job_title": "",
+      "job_description": "",
+      "role_category": "",
+      "salary": "",
+      "work_experience": "",
+      "job_type": "FullTime",
+      "education_level": "Bachelor's Degree",
+      "skills": [],
+      "id": 9
+    },
+    {
+      "company_name": "",
+      "company_description": "",
+      "company_location": "",
+      "number_of_postings": 1,
+      "job_title": "",
+      "job_description": "",
+      "role_category": "",
+      "salary": "",
+      "work_experience": "",
+      "job_type": "FullTime",
+      "education_level": "Bachelor's Degree",
+      "skills": [],
+      "id": 10
+    },
+    {
+      "company_name": "",
+      "company_description": "",
+      "company_location": "",
+      "number_of_postings": 1,
+      "job_title": "",
+      "job_description": "",
+      "role_category": "",
+      "salary": "",
+      "work_experience": "",
+      "job_type": "FullTime",
+      "education_level": "Bachelor's Degree",
+      "skills": [],
+      "id": 11
+    },
+    {
+      "company_name": "",
+      "company_description": "",
+      "company_location": "",
+      "number_of_postings": 1,
+      "job_title": "",
+      "job_description": "",
+      "role_category": "",
+      "salary": "",
+      "work_experience": "",
+      "job_type": "FullTime",
+      "education_level": "Bachelor's Degree",
+      "skills": [],
+      "id": 12
+    },
+    {
+      "company_name": "",
+      "company_description": "",
+      "company_location": "",
+      "number_of_postings": 1,
+      "job_title": "",
+      "job_description": "",
+      "role_category": "",
+      "salary": "",
+      "work_experience": "",
+      "job_type": "FullTime",
+      "education_level": "Bachelor's Degree",
+      "skills": [],
+      "id": 13
+    },
+    {
+      "company_name": "",
+      "company_description": "",
+      "company_location": "",
+      "number_of_postings": 1,
+      "job_title": "",
+      "job_description": "",
+      "role_category": "",
+      "salary": "",
+      "work_experience": "",
+      "job_type": "FullTime",
+      "education_level": "Bachelor's Degree",
+      "skills": [],
+      "id": 14
+    },
+    {
+      "company_name": "",
+      "company_description": "",
+      "company_location": "",
+      "number_of_postings": 1,
+      "job_title": "",
+      "job_description": "",
+      "role_category": "",
+      "salary": "",
+      "work_experience": "",
+      "job_type": "FullTime",
+      "education_level": "Bachelor's Degree",
+      "skills": [],
+      "id": 15
+    },
+    {
+      "company_name": "asdf",
+      "company_description": "asd............................................................................",
+      "company_location": "wderf",
+      "number_of_postings": 3,
+      "job_title": "",
+      "job_description": "",
+      "role_category": "",
+      "salary": "",
+      "work_experience": "",
+      "job_type": "FullTime",
+      "education_level": "Bachelor's Degree",
+      "skills": [],
+      "id": 16
+    },
+    {
+      "company_name": "asdf",
+      "company_description": ".............................................................",
+      "company_location": "asdef",
+      "number_of_postings": 4,
+      "job_title": "asdf",
+      "job_description": ".............................................................",
+      "role_category": "asdc",
+      "salary": "2500000",
+      "work_experience": "1",
+      "job_type": "FullTime",
+      "education_level": "Bachelor's Degree",
+      "skills": [
+        "Python",
+        "JavaScript",
+        "Angular"
+      ],
+      "id": 17
+    },
+    {
+      "company_name": "asdx",
+      "company_description": "asded...............................................",
+      "company_location": "ased",
+      "number_of_postings": 3,
+      "job_title": "rakesh",
+      "job_description": "sedrf/......................................................",
+      "role_category": "asdc",
+      "salary": "200000",
+      "work_experience": "0",
+      "job_type": "Temporary",
+      "education_level": "Bachelor's Degree",
+      "skills": [
+        "Java"
+      ],
+      "id": 18
+    },
+    {
+      "company_name": "esde",
+      "company_description": "/.........................................................",
+      "company_location": "wsed",
+      "number_of_postings": 8,
+      "job_title": "asdf",
+      "job_description": "...............................................................",
+      "role_category": "wed",
+      "salary": "200000",
+      "work_experience": "1",
+      "job_type": "FullTime",
+      "education_level": "Bachelor's Degree",
+      "skills": [
+        "ReactJS"
+      ],
+      "id": 19
+    },
+    {
+      "company_name": "as",
+      "company_description": "....................................................",
+      "company_location": "wsed",
+      "number_of_postings": 4,
+      "job_title": "asdf",
+      "job_description": ".........................................................",
+      "role_category": "wed",
+      "salary": "175000",
+      "work_experience": "2",
+      "job_type": "FullTime",
+      "education_level": "Bachelor's Degree",
+      "skills": [
+        "Python",
+        "JavaScript"
+      ],
+      "id": 20
+    }
+  ]
+}
