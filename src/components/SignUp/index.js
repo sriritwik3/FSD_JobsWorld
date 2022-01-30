@@ -1,3 +1,4 @@
+/// This form is used by the user to login to the account.
 import "./index.css";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -44,23 +45,12 @@ function Signup() {
     setEmployeLogin({ ...employeLogin, password: event.target.value });
   };
 
-  // const [submitted, setSubmitted] = useState(false);
-  // const [valid, setValid] = useState(false);
-
   const handleSubmitSignUp = (event) => {
     event.preventDefault();
-    // if (employeSignUp.name && employeSignUp.email && employeSignUp.password) {
-    //   setValid(true);
-    // }
-    // setSubmitted(true);
   };
 
   const handleSubmitLogin = (event) => {
     event.preventDefault();
-    // if (employeLogin.email && employeLogin.password) {
-    //   setValid(true);
-    // }
-    // setSubmitted(true);
   };
 
   const [user, loading] = useAuthState(auth);
@@ -81,6 +71,7 @@ function Signup() {
     );
   };
 
+  // Used to render signup form.
   return (
     <div className="loginbody">
       <h2 className="heading">Begin Your journey as an Employee</h2>

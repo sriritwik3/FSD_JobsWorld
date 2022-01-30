@@ -1,3 +1,4 @@
+// This component is used to render Home page.
 import "./index.css";
 import { useEffect } from "react";
 
@@ -18,6 +19,7 @@ import {
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+// This array is used to display category cards in home.
 const features = [
   {
     id: 1,
@@ -69,6 +71,7 @@ const features = [
   },
 ];
 
+//This function is used to render the main cards in home.
 const renderCards = () => {
   return (
     <>
@@ -85,7 +88,9 @@ const renderCards = () => {
             </Link>
           </div>
         </div>
-
+        {
+          // post job card
+        }
         <div
           className="home-post-job-card"
           data-aos="fade-up"
@@ -103,7 +108,9 @@ const renderCards = () => {
             </Link>
           </div>
         </div>
-
+        {
+          // post rdsume card
+        }
         <div
           className="home-resume-card"
           data-aos="fade-up"
@@ -127,6 +134,7 @@ const renderCards = () => {
   );
 };
 
+// This function renders the categories in home
 const renderFeatures = () => {
   return (
     <div className="home-features-container">
@@ -144,9 +152,10 @@ const renderFeatures = () => {
   );
 };
 
+// Rendering the whole home page
 const Home = () => {
   useEffect(() => {
-    AOS.init();
+    AOS.init(); // used for transitions in the home page.
   });
   return (
     <>

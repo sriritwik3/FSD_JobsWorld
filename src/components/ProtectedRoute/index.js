@@ -1,3 +1,4 @@
+// This component is used to check if user is ligged in or not.
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase";
 

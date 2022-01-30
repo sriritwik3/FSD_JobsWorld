@@ -1,18 +1,23 @@
+// This component is used to change the job details.
 import "./index.css";
 import postjob from "./Images/job-offer.webp";
 
 const PostJobDetails = (props) => {
+  // This function is used to change the state when job title input is changed
   const onChangeJobTitleInput = (event) => {
     const { changeJobTitle } = props;
     changeJobTitle(event.target.value);
   };
 
+  // This function is used to render the input element which is used to collect info about job title
   const renderJobTitleInput = () => {
     const { jobTitle, validateJobTitle, isJobTitleValid } = props;
     return (
       <>
         <label className="job-title-label" htmlFor="job-title">
           Job Title
+          <a type="button" className="hover-button jobtitle" placeholder="i">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i></a>
         </label>
         <input
           type="text"
@@ -31,11 +36,13 @@ const PostJobDetails = (props) => {
     );
   };
 
+  // This function is used to change the state when job desc  input is changed
   const onChangeJobDescriptionInput = (event) => {
     const { changeJobDescription } = props;
     changeJobDescription(event.target.value);
   };
 
+  // This function is used to render the input element which is used to collect info about job desc
   const renderJobDescriptionInput = () => {
     const { jobDescription, validateJobDescription, isJobDescriptionValid } =
       props;
@@ -46,6 +53,8 @@ const PostJobDetails = (props) => {
           htmlFor="job-description"
         >
           Job Description
+          <a type="button" className="hover-button job-description" placeholder="i">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i></a>
         </label>
         <textarea
           rows="10"
@@ -66,17 +75,21 @@ const PostJobDetails = (props) => {
     );
   };
 
+  // This function is used to change the state when role category input is changed
   const onChangeRoleCategoryInput = (event) => {
     const { changeRoleCategory } = props;
     changeRoleCategory(event.target.value);
   };
 
+  // This function is used to render the input element which is used to collect info about role category
   const renderRoleCategoryInput = () => {
     const { roleCategory, validateRoleCategory, isRoleCategoryValid } = props;
     return (
       <>
         <label className="post-job-details-form-label" htmlFor="role-category">
           Role Category
+          <a type="button" className="hover-button role" placeholder="i">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i></a>
         </label>
         <input
           type="text"
@@ -94,17 +107,21 @@ const PostJobDetails = (props) => {
     );
   };
 
+  // This function is used to change the state when salary input is changed
   const onChangeSalaryInput = (event) => {
     const { changeSalary } = props;
     changeSalary(event.target.value);
   };
 
+  // This function is used to render the input element which is used to collect info about salary
   const renderSalaryInput = () => {
     const { salary, validateSalary, isSalaryValid } = props;
     return (
       <>
         <label className="post-job-details-form-label" htmlFor="salary">
           Salary
+          <a type="button" className="hover-button Pay" placeholder="i">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i></a>
         </label>
         <input
           type="number"
@@ -125,11 +142,13 @@ const PostJobDetails = (props) => {
     );
   };
 
+  // This function is used to change the state when work experience input is changed
   const onChangeWorkExperience = (event) => {
     const { changeWorkExperience } = props;
     changeWorkExperience(event.target.value);
   };
 
+  // This function is used to render the input element which is used to collect info about work experience
   const renderWorkExperienceInput = () => {
     const { workExperience, validateWorkExperience, isWorkExperienceValid } =
       props;
@@ -140,6 +159,8 @@ const PostJobDetails = (props) => {
           htmlFor="work-experience"
         >
           Minimum work experience required(years)
+          <a type="button" className="hover-button work-exp" placeholder="i">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i></a>
         </label>
         <input
           type="number"
@@ -157,11 +178,13 @@ const PostJobDetails = (props) => {
     );
   };
 
+  // This function is used to change the state when job type input is changed
   const onChangeJobType = (event) => {
     const { changeJobType } = props;
     changeJobType(event.target.value);
   };
 
+  // This function is used to render the input element which is used to collect info about job type
   const renderJobTypeInput = () => {
     const { jobTypeInput, activeJobTypeId } = props;
 
@@ -169,6 +192,8 @@ const PostJobDetails = (props) => {
       <>
         <label className="post-job-details-form-label" htmlFor="job-type">
           Job Type
+          <a type="button" className="hover-button jobtype" placeholder="i">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i></a>
         </label>
         <select
           id="job-type"
@@ -193,11 +218,13 @@ const PostJobDetails = (props) => {
     );
   };
 
+  // This function is used to change the state when education level input is changed
   const onChangeEducationLevel = (event) => {
     const { changeEducationLevel } = props;
     changeEducationLevel(event.target.value);
   };
 
+  // This function is used to render the input element which is used to collect info about education level
   const renderEducationLevelInput = () => {
     const { educationLevelInput, activeEducationLevelId } = props;
     return (
@@ -207,6 +234,8 @@ const PostJobDetails = (props) => {
           htmlFor="education-level"
         >
           Education Level
+          <a type="button" className="hover-button ed-level" placeholder="i">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i></a>
         </label>
         <select
           id="educationLevel"
@@ -231,6 +260,7 @@ const PostJobDetails = (props) => {
     );
   };
 
+  // This component is used to render skills
   const renderSkills = () => {
     const { skillsInput, selectedSkills, addSkill, deleteSkill } = props;
     return (
@@ -274,6 +304,8 @@ const PostJobDetails = (props) => {
           htmlFor="required-skills"
         >
           Skills Required
+          <a type="button" className="hover-button req-skills" placeholder="i">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i></a>
         </label>
         <ul className="post-job-form-skills-list" id="required-skills">
           {renderSkills()}
@@ -282,11 +314,13 @@ const PostJobDetails = (props) => {
     );
   };
 
+  // This button to used to navigave to the prev page.
   const onClickPreviousBtn = () => {
     const { prevStep } = props;
     prevStep();
   };
 
+  // This function is used to render previous btn.
   const renderPreviousBtn = () => {
     return (
       <>
@@ -331,6 +365,7 @@ const PostJobDetails = (props) => {
     );
   };
 
+  // Used to reneder all input fileds
   return (
     <div className="post-job-details-container">
       <div className="post-job-details-container-form">

@@ -1,8 +1,11 @@
+// This component is used to render a form which is used to upload the details of the resume.
 import React, { useState, useEffect } from "react";
 import "./index.css";
 
 function Resume(props) {
+  const { user } = props;
   const [values, setValues] = useState({
+    user_id: user.uid,
     firstName: "",
     lastName: "",
     currentCity: "",
@@ -29,6 +32,7 @@ function Resume(props) {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
 
+  // The below functions are used to update state when the respective input changes.
   const handleFirstNameInputChange = (event) => {
     setValues({ ...values, firstName: event.target.value });
   };
@@ -80,6 +84,7 @@ function Resume(props) {
     setValues({ ...values, skills: skill });
   };
 
+  // This function is executed when user submits the form.
   const handleSubmit = (event) => {
     event.preventDefault();
     setFormErrors(validate(values));
@@ -96,41 +101,18 @@ function Resume(props) {
           "Content-type": "application/json",
         },
       };
+      // Making a update request to server to post the details of the resume.
       const response = await fetch("http://localhost:3004/resumes", options);
-      // setValues({
-      //   ...values,
-      //   firstName: "",
-      //   lastName: "",
-      //   currentCity: "",
-      //   postalCode: "",
-      //   email: "",
-      //   phone: "",
-      //   degree: "",
-      //   fieldOfStudy: "",
-      //   college: "",
-      //   year: "",
-      //   jobTitle: "",
-      //   company: "",
-      //   jobCity: "",
-      //   jobYear: "",
-      //   jobDesc: "",
-      //   skills: {
-      //     c: false,
-      //     cpp: false,
-      //     python: false,
-      //     java: false,
-      //   },
-      // });
       if (response.ok === true) {
-        const { history } = props;
         alert(
           "Resume submitted successfully, You will be redirected to home page..."
         );
-        history.push("/");
+        window.location = "/";
       }
     }
   }, [formErrors]);
 
+  // The below the function is used to validate the respective input fields.
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -156,6 +138,8 @@ function Resume(props) {
     }
     if (!values.phone) {
       errors.phone = "*contact number is required";
+    } else if((values.phone.length !== 10)){
+      errors.phone = "*10 digit number required";
     }
     if (!values.degree) {
       errors.degree = "*degree is required";
@@ -187,6 +171,7 @@ function Resume(props) {
     return errors;
   };
 
+  // Displaying the form
   return (
     <div className="grad">
       <form method="" onSubmit={handleSubmit}>
@@ -205,6 +190,16 @@ function Resume(props) {
                 <h3>Personal information</h3>
                 <div className="resume-card-name">
                   <div className="resume-card-name-in">
+                    <label>
+                      firstName{" "}
+                      <a
+                        type="button "
+                        className="hover-button firstname"
+                        placeholder="i"
+                      >
+                        <i class="fas fa-info-circle" aria-hidden="true"></i>
+                      </a>
+                    </label>
                     <input
                       type="text"
                       id="firstName"
@@ -212,11 +207,21 @@ function Resume(props) {
                       className=" resume-fname-input"
                       value={values.firstName}
                       onChange={handleFirstNameInputChange}
-                      placeholder="First Name"
                     />
+
                     <p className="resumeErrormsg">{formErrors.firstName}</p>
                   </div>
                   <div className="resume-card-name-in">
+                    <label>
+                      lastName{" "}
+                      <a
+                        type="button"
+                        className="hover-button lastname"
+                        placeholder="i"
+                      >
+                        <i class="fas fa-info-circle" aria-hidden="true"></i>
+                      </a>
+                    </label>
                     <input
                       type="text"
                       id="lastName"
@@ -224,30 +229,47 @@ function Resume(props) {
                       className="resume-fname-input"
                       value={values.lastName}
                       onChange={handleLastNameInputChange}
-                      placeholder="Last Name"
                     />
                     <p className="resumeErrormsg">{formErrors.lastName} </p>
                   </div>
                 </div>
                 <div className="resume-card-name">
-                  <div className="resume-card-city">
+                  <div className="resume-card-city-1">
+                    <label>
+                      City{" "}
+                      <a
+                        type="button"
+                        className="hover-button city"
+                        placeholder="i"
+                      >
+                        <i class="fas fa-info-circle" aria-hidden="true"></i>
+                      </a>
+                    </label>
                     <input
                       type="text"
                       id="currentCity"
                       name="currentCity"
                       className="resume-fname-input"
-                      placeholder="City"
                       value={values.currentCity}
                       onChange={handleCurrentCityInputChange}
                     />
                     <p className="resumeErrormsg">{formErrors.currentCity} </p>
                   </div>
                   <div className="resume-card-pincode">
+                    <label>
+                      zip code
+                      <a
+                        type="button"
+                        className="hover-button zip"
+                        placeholder="i"
+                      >
+                        <i class="fas fa-info-circle" aria-hidden="true"></i>
+                      </a>
+                    </label>
                     <input
                       type="text"
                       id="postalCode"
                       name="postalCode"
-                      placeholder="PinCode"
                       className="resume-fname-input"
                       value={values.postalCode}
                       onChange={handlePostalCodeInputChange}
@@ -256,8 +278,15 @@ function Resume(props) {
                   </div>
                 </div>
                 <div className="resume-card-marginbottom">
-                  <label htmlFor="email" className="resume-label-marginbottom">
+                  <label htmlFor="email" className="resume-label-marginbottom ">
                     Email address
+                    <a
+                      type="button"
+                      className="hover-button email"
+                      placeholder="i"
+                    >
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                    </a>
                   </label>{" "}
                   <br />
                   <input
@@ -273,6 +302,13 @@ function Resume(props) {
                 <div className="resume-card-marginbottom">
                   <label htmlFor="phone" className="resume-label-marginbottom">
                     Contact Number
+                    <a
+                      type="button"
+                      className="hover-button phone"
+                      placeholder="i"
+                    >
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                    </a>
                   </label>
                   <br />
                   <input
@@ -291,6 +327,13 @@ function Resume(props) {
                 <div className="resume-card-marginbottom">
                   <label htmlFor="degree" className="resume-label-marginbottom">
                     Degree
+                    <a
+                      type="button"
+                      className="hover-button degree"
+                      placeholder="i"
+                    >
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                    </a>
                   </label>
                   <br />
                   <select
@@ -317,6 +360,13 @@ function Resume(props) {
                     className="resume-label-marginbottom"
                   >
                     Field Of Study
+                    <a
+                      type="button"
+                      className="hover-button study"
+                      placeholder="i"
+                    >
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                    </a>
                   </label>
                   <br />
                   <input
@@ -335,6 +385,13 @@ function Resume(props) {
                     className="resume-label-marginbottom"
                   >
                     College or University
+                    <a
+                      type="button"
+                      className="hover-button collage"
+                      placeholder="i"
+                    >
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                    </a>
                   </label>
                   <br />
                   <input
@@ -350,6 +407,13 @@ function Resume(props) {
                 <div className="resume-card-marginbottom">
                   <label htmlFor="year" className="resume-label-marginbottom">
                     Year of study (mention as from XXXX to XXXX)
+                    <a
+                      type="button"
+                      className="hover-button year"
+                      placeholder="i"
+                    >
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                    </a>
                   </label>
                   <br />
                   <input
@@ -374,6 +438,13 @@ function Resume(props) {
                     className="resume-label-marginbottom"
                   >
                     Job Title
+                    <a
+                      type="button"
+                      className="hover-button jobTitle"
+                      placeholder="i"
+                    >
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                    </a>
                   </label>
                   <br />
                   <input
@@ -392,6 +463,13 @@ function Resume(props) {
                     className="resume-label-marginbottom"
                   >
                     Company
+                    <a
+                      type="button"
+                      className="hover-button company"
+                      placeholder="i"
+                    >
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                    </a>
                   </label>
                   <br />
                   <input
@@ -410,6 +488,13 @@ function Resume(props) {
                     className="resume-label-marginbottom"
                   >
                     Job City
+                    <a
+                      type="button"
+                      className="hover-button jobcity"
+                      placeholder="i"
+                    >
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                    </a>
                   </label>
                   <br />
                   <input
@@ -428,6 +513,13 @@ function Resume(props) {
                     className="resume-label-marginbottom"
                   >
                     Year of work (mention as from XXXX to XXXX)
+                    <a
+                      type="button"
+                      className="hover-button jobtime"
+                      placeholder="i"
+                    >
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                    </a>
                   </label>
                   <br />
                   <input
@@ -446,6 +538,13 @@ function Resume(props) {
                     className="resume-label-marginbottom"
                   >
                     Job Description
+                    <a
+                      type="button"
+                      className="hover-button desc"
+                      placeholder="i"
+                    >
+                      <i class="fas fa-info-circle" aria-hidden="true"></i>
+                    </a>
                   </label>
                   <br />
                   <textarea

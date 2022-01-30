@@ -13,41 +13,71 @@ import Resume from "./components/Resume";
 import ResetPassword from "./components/ResetPassword";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ScrollToTop from "./components/ScrollToTop";
+import AppliedApplicants from "./components/AppliedApplicants";
+import ResumeDetails from "./components/ResumeDetails";
+import EditJobForm from "./components/EditJobForm";
+import EditResume from "./components/EditResume";
+import AdminPage from "./components/AdminPage";
 
-// const jobDetails = {
-//   role: "Java Software Developer",
-//   jobDescription:
-//     "Looking for candidates with below expertise who can join immediately: 1.Experience in JAVA and J2EE.2.Experience in Spring boot framework.3.Multi threading and web methods,4.OOPs knowledge,5.Good understanding of RDBMS, JPA / Hibernate,6.Writing Optimized SQL queries ",
-//   company: "MANIPAL SOFTWARE PRIVATE LIMITED",
-//   reviews: 2999,
-//   salary: 1200000,
-//   workExperience: 2,
-//   location: "Hyderabad, Secunderabad",
-//   posted: "2 days ago",
-//   postings: 229,
-//   employmentType: "Full Time",
-//   roleCategory: "Software Development",
-//   education: "Bachelor's",
-//   keySkills: ["HTML", "CSS", "JS", "ReactJS"],
-//   aboutCompany:
-//     "AIR Worldwide Corporation (AIR), USA, specializing in the field of catastrophe modeling and risk management, invites software professionals with a passion for challenge to develop IT-enabled software solutions for organizations across the world. AIR, headquartered in Boston, is one of the leading providers of analytical tools and software systems that help insurers, reinsures, and financial institutions manage their catastrophic risk due to natural and man-made disasters.",
-// };
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "./firebase";
+
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const App = () => {
+  const [user] = useAuthState(auth);
+  const history = useHistory();
   return (
     <Router>
       <ScrollToTop />
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
-        <ProtectedRoute exact path="/postjobs" component={PostJobForm} />
-        <ProtectedRoute exact path="/profile" component={Profile} />
+        <ProtectedRoute
+          exact
+          path="/postjobs"
+          component={() => <PostJobForm user={user} history={history} />}
+        />
+        <ProtectedRoute
+          exact
+          path="/profile"
+          component={() => <Profile user={user} history={history} />}
+        />
         <Route exact path="/reset" component={ResetPassword} />
-        <ProtectedRoute exact path="/uploadresume" component={Resume} />
-        <Route exact path="/jobs" component={AllJobsSection} />
-        <Route exact path="/jobs/:id" component={JobItemDetails} />
+        <ProtectedRoute
+          exact
+          path="/uploadresume"
+          component={() => <Resume user={user} />}
+        />
+        <Route
+          exact
+          path="/jobs"
+          component={({ match }) => (
+            <AllJobsSection user={user} match={match} />
+          )}
+        />
+        <Route
+          exact
+          path="/jobs/:id"
+          component={({ match }) => (
+            <JobItemDetails user={user} match={match} />
+          )}
+        />
         <Route exact path="/register" component={SignUp} />
         <Route exact path="/login" component={Login} />
+        <Route
+          exact
+          path="/jobs/:id/applicants"
+          component={AppliedApplicants}
+        />
+        <Route path="/user-resumes/:id" component={ResumeDetails} />
+        <Route path="/edit-job/:id" component={EditJobForm} />
+        <Route
+          exact
+          path="/edit-resume/:id"
+          component={() => <EditResume user={user} />}
+        />
+        <Route exact path="/admin" component={AdminPage} />
       </Switch>
       <Footer />
     </Router>

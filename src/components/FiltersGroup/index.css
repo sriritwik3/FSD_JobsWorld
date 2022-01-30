@@ -7,17 +7,23 @@
   padding: 20px;
   overflow-y: auto;
   box-shadow: 10px 10px 5px grey;
-  border-radius: 2rem 5rem 2rem 2rem;
+  border-radius: 2rem 2rem 2rem 2rem;
 }
 
 .filters-card::-webkit-scrollbar {
   display: none;
 }
 
+.filters-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
 .filters-heading {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 20px;
-  margin-bottom: 20px;
 }
 
 .filters-search-bar {
@@ -102,9 +108,10 @@
   border-radius: 20px;
 }
 
-.skills-heading {
+.skills-heading-1 {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 20px;
+  color: black;
 }
 
 .select-skill {
@@ -171,4 +178,5 @@
   border: none;
   outline: none;
   cursor: pointer;
+  margin: 0;
 }

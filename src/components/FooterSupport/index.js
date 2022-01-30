@@ -1,3 +1,4 @@
+// This component is used to render the curve which supports the footer to look nice.
 const FooterSupport = () => {
   return (
     <div

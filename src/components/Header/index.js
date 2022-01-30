@@ -1,3 +1,4 @@
+//This component is used to display the header of the website
 import "./index.css";
 
 import React from "react";
@@ -40,6 +41,9 @@ const Header = () => {
           </Link>
         </ul>
         {user ? renderProfile() : renderLoginOrRegister()}
+        {
+          //Render different icons based on user login.
+        }
       </div>
     </div>
   );

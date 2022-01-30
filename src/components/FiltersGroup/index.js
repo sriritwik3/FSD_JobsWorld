@@ -1,11 +1,14 @@
+// This component is used to render the filters.
 import "./index.css";
 
 const FiltersGroup = (props) => {
+  // This function is used to change the state when search input is changed
   const onChangeSearchInput = (event) => {
     const { changeSearchInput } = props;
     changeSearchInput(event.target.value);
   };
 
+  // This function is used to change the state when enter key is clicked.
   const onEnterSearchInput = (event) => {
     const { enterSearchInput } = props;
     if (event.key === "Enter") {
@@ -13,13 +16,14 @@ const FiltersGroup = (props) => {
     }
   };
 
+  // This function is used to render search input.
   const renderSearchInput = () => {
     const { searchInput } = props;
     return (
       <input
         type="search"
         className="filters-search-bar"
-        placeholder="Search"
+        placeholder="Search Job Name"
         value={searchInput}
         onChange={onChangeSearchInput}
         onKeyDown={onEnterSearchInput}
@@ -27,11 +31,13 @@ const FiltersGroup = (props) => {
     );
   };
 
+  // This function is used to change the state when salary is changed
   const changeSalaryCategory = (salaryId) => {
     const { clickSalaryId } = props;
     clickSalaryId(salaryId);
   };
 
+  // This function is used to render salary input.
   const renderSalaryFilters = () => {
     const { salaryFilters } = props;
     return salaryFilters.map((eachObject) => {
@@ -59,11 +65,13 @@ const FiltersGroup = (props) => {
     );
   };
 
+  // This function is used to change the state when location input is changed
   const onChangeLocation = (event) => {
     const { changeLocation } = props;
     changeLocation(event.target.value);
   };
 
+  // This function is used to render location filter.
   const renderLocations = () => {
     const { locationFilters, activeLocationId } = props;
     return (
@@ -91,6 +99,7 @@ const FiltersGroup = (props) => {
     );
   };
 
+  // This function is used to change the state when jobType input is changed
   const onClickJobType = (jobTypeId) => {
     const { changeJobType } = props;
     changeJobType(jobTypeId);
@@ -114,6 +123,7 @@ const FiltersGroup = (props) => {
     });
   };
 
+  // This function is used to render job type filter.
   const renderJobType = () => {
     return (
       <>
@@ -123,17 +133,19 @@ const FiltersGroup = (props) => {
     );
   };
 
+  // This function is used to change the state when skill input is changed
   const onChangeSkillId = (event) => {
     const { changeSkill } = props;
     changeSkill(event.target.value);
   };
 
+  // This function is used to render skills filter.
   const renderSkills = () => {
     const { skillFilters, activeSkillId } = props;
 
     return (
       <>
-        <h1 className="skills-heading">Skills</h1>
+        <h1 className="skills-heading-1">Skills</h1>
         <select
           className="select-skill"
           value={activeSkillId}
@@ -152,11 +164,13 @@ const FiltersGroup = (props) => {
     );
   };
 
+  // This function is used to change the state when education level input is changed
   const onClickEducationLevel = (educationLevelId) => {
     const { changeEducationLevel } = props;
     changeEducationLevel(educationLevelId);
   };
 
+  // This function is used to render education level filter.
   const renderEducationLevelFilters = () => {
     const { educationLevelFilters, activeEducationLevelId } = props;
 
@@ -186,11 +200,13 @@ const FiltersGroup = (props) => {
     );
   };
 
+  // This function is used to change the state when company input is changed
   const onChangeCompanyId = (event) => {
     const { changeCompany } = props;
     changeCompany(event.target.value);
   };
 
+  // This function is used to render company filter.
   const renderCompanyFilters = () => {
     const { companyFilters, activeCompanyId } = props;
 
@@ -219,6 +235,7 @@ const FiltersGroup = (props) => {
     );
   };
 
+  // This function is used to render clear btn which is used to clear all filters.
   const renderClearButton = () => {
     const { clearAllFilters } = props;
     return (
@@ -234,9 +251,13 @@ const FiltersGroup = (props) => {
     );
   };
 
+  // Displaying all filters
   return (
     <div className="filters-card">
-      <h1 className="filters-heading">Filters</h1>
+      <div className="filters-header">
+        <h1 className="filters-heading">Filters</h1>
+        {renderClearButton()}
+      </div>
       {renderSearchInput()}
       {renderSalaries()}
       {renderLocations()}
@@ -244,7 +265,6 @@ const FiltersGroup = (props) => {
       {renderSkills()}
       {renderEducationLevel()}
       {renderCompanyFilters()}
-      {renderClearButton()}
     </div>
   );
 };

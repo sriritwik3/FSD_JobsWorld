@@ -1,27 +1,25 @@
-# FSD_JobsWorld
+﻿# Jobs World
 
-# FSD-2 PROJECT
+This is a **Full Stack Development** Project is mainly focused on frontend. This is to demonstrate what we learnt in the course.
 
-## Group - **9**
-	
-## Title -  **Jobs World**
- 
-## Details -
- **Roll No:**  **Name**
- S20190010182 Tulluri Rakesh
- S20190010185 Vaidya Rugvedh
- S20190010180 Thorlikonda Lakshmi Sai Gopinadh 
- S20190010183 Tupili Mukundh Reddy
- S20190010181 Thota Datta Aneesh
+## Problem Statement
+- These days there are many skilled people who are looking for jobs which showcase their skills but due to lack of awareness to find jobs they could not get desired job. And many employees lost their jobs due to pandemic.
 
-## Basic Instructions to run app-
+- Recruiters also cannot find efficient employees to work in their company in a short period of time.
+## Problem Solution
+-   To solve this problem, we came up with an idea of creating a web application which helps both job seekers and recruiter.
+    
+-   Through this web application job seekers can narrow down their search, to the job of their choice.
+    
+-   And recruiters can find employees who meet their requirements.
+## Project Setup
+- **Step -1** :- Download the zip file provided in the classroom and unzip the file in the working directory
+- **Step-2** :- Download Node from the site **[Download Node](https://nodejs.org/en/download/)** and install it.
+- **Step-3** :- Open the unzipped folder in any IDE for running the application. Open a terminal window and head to the application directory in the terminal using cd command.
+- **Step-4** :- Run **npm install** in the terminal, which install all the node modules required for the application.
+- **Step-5** :- Run **json-server --watch db.json --port 3004** to connect the local database. If the json-server is not installed run **npm install -g json-server** and then run the above command for connecting the local database.
+- **Step-6** :- Now we can start the server by the command **npm start**. You will be redirected to the web browser where the application is running in the **[http://localhost:3000](http://localhost:3000)** url.
 
- - Download the zip file, extract it in the working directory.
- - Open the extracted folder in IDE of your choice.
- - Please make sure that there is Node installed in your computer.
- - Head to the jobs_world directory using the path of the extracted folder.
- - Run **npm install** command in the terminal, which installs all the required modules for the application.
- - Once it's done run **npm start** to start the application.
- - It redirects you to a browser which opens the application in http://localhost:3000.
+- **The application will run at [http://localhost:3000](http://localhost:3000)**
 
-``
+
