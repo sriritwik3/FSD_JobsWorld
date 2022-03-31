@@ -1,3 +1,4 @@
+// This component is used to post the company details.
 import "./index.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -5,11 +6,13 @@ import { faMinusSquare, faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import postjob from "./Images/job-offer.webp";
 
 const PostCompanyDetails = (props) => {
+  // This function is used to change the state when company name input is changed
   const onChangeCompanyName = (event) => {
     const { changeCompanyName } = props;
     changeCompanyName(event.target.value);
   };
 
+  // This function is used to render the input element which is used to collect the company name info.
   const renderCompanyNameInput = () => {
     const { companyName, validateCompanyName, isCompanyNameValid } = props;
     return (
@@ -19,6 +22,8 @@ const PostCompanyDetails = (props) => {
           htmlFor="company-name"
         >
           Company Name
+          <a type="button" className="hover-button companyName" placeholder="i">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i></a>
         </label>
         <input
           id="company-name"
@@ -39,18 +44,23 @@ const PostCompanyDetails = (props) => {
     );
   };
 
+  // This function is used to change the state when role in hiring process dropdown input is changed
   const onChangeRoleInHiringProcess = (event) => {
     const { changeRoleInHiringProcess } = props;
     changeRoleInHiringProcess(event.target.value);
   };
 
+  // This function is used to render the input element which is used to collect info about role of the recruiter.
   const renderRoleInHiringProcessInput = () => {
     const { roleInHiringProcess, activeRoleInHiringProcessId } = props;
     return (
       <>
         <label className="post-job-form-label" htmlFor="role-in-hiring-process">
           Your role in the hiring process
+          <a type="button" className="hover-button myrole" placeholder="i">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i></a>
         </label>
+        
         <select
           id="role-in-hiring-process"
           className="select-role-in-hiring-process"
@@ -74,11 +84,13 @@ const PostCompanyDetails = (props) => {
     );
   };
 
+  // This function is used to change the state when company desc input is changed
   const onChangeCompanyDescription = (event) => {
     const { changeCompanyDescription } = props;
     changeCompanyDescription(event.target.value);
   };
 
+  // This function is used to render the input element which is used to collect info about company description
   const renderCompanyDescriptionInput = () => {
     const {
       companyDescription,
@@ -89,6 +101,8 @@ const PostCompanyDetails = (props) => {
       <>
         <label className="post-job-form-label" htmlFor="company-description">
           Company Description
+          <a type="button" className="hover-button description" placeholder="i">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i></a>
         </label>
         <textarea
           rows="15"
@@ -110,11 +124,13 @@ const PostCompanyDetails = (props) => {
     );
   };
 
+  // This function is used to change the state when company location input is changed
   const onChangeCompanyLocation = (event) => {
     const { changeCompanyLocation } = props;
     changeCompanyLocation(event.target.value);
   };
 
+  // This function is used to render the input element which is used to collect info about company location
   const renderCompanyLocationInput = () => {
     const { companyLocation, validateCompanyLocation, isCompanyLocationValid } =
       props;
@@ -122,6 +138,8 @@ const PostCompanyDetails = (props) => {
       <>
         <label className="post-job-form-label" htmlFor="company-location">
           Company Location
+          <a type="button" className="hover-button comp-location" placeholder="i">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i></a>
         </label>
         <input
           id="company-location"
@@ -142,16 +160,19 @@ const PostCompanyDetails = (props) => {
     );
   };
 
+  //This function is executed when the number of postings is increased
   const onIncrementNumberOfPostings = () => {
     const { incrementNumberOfPostings } = props;
     incrementNumberOfPostings();
   };
 
+  ////This function is executed when the number of postings is decreaseed
   const onDecrementNumberOfPostings = () => {
     const { decrementNumberOfPostings } = props;
     decrementNumberOfPostings();
   };
 
+  // This function is used to render the input element which is used to collect info about number of postings.
   const renderNumberOfPostingsInput = () => {
     const { numberOfPostings } = props;
 
@@ -183,6 +204,7 @@ const PostCompanyDetails = (props) => {
     );
   };
 
+  // This function renders next btn which is used to navigate to edit Job details form
   const renderNextButton = () => {
     const { nextStep } = props;
     return (

@@ -1,19 +1,80 @@
 .profile-container {
   height: 100vh;
   width: 100vw;
+
+  padding-top: 3rem;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
-.profile-page-logout-btn {
+.profile-left-container {
+  background-color: aliceblue;
+  display: flex;
+  height: 35rem;
+  width: 20rem;
+  flex-direction: column;
+  margin: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.profile-page-btns {
   background-color: #1288f7;
   color: white;
-  margin-top: 20px;
-  padding: 10px 30px;
-  outline: none;
+  margin: 10px;
+  padding: 15px;
   border: none;
-  border-radius: 10px;
   cursor: pointer;
+  font-size: large;
+  height: 50px;
+  border-radius: 10px;
+  box-shadow: 0 7px 7px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.profile-info {
+  height: 10rem;
+  width: 20rem;
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  align-items: center;
+}
+.prf-img {
+  font-size: 50px;
+  margin-right: 20px;
+  padding-right: 40px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+}
+.prf-img h1 {
+  color: rgb(141, 146, 150);
+  padding-left: 30px;
+  padding-bottom: 10px;
+}
+
+.profile-image {
+  height: 8rem;
+  width: 8rem;
+}
+
+.profile-tabs {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.profile-right-container {
+  height:86vh;
+  overflow-y: auto;
+  width: 60rem;
+  margin: 2rem;
+  border-radius: 10px;
+  margin-left: 50px;
+  background-color: aliceblue;
+  padding:20px;
+  padding-left:100px;
+}
+
+.active-tab{
+  background-color:#fff;
+  color:#1288f7;
 }

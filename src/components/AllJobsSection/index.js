@@ -1,49 +1,73 @@
+// Component to display all jobs
+
 import "./index.css";
 import { Component } from "react";
 
+//Importing Components
 import FiltersGroup from "../FiltersGroup";
 import JobCard from "../JobCard/";
 import JobsHeader from "../JobsHeader";
 
+// Array used to display sort filter
 const sortByOptions = [
   {
-    optionId: "PRICE_HIGH",
+    optionId: "",
+    displayText: "Newest First",
+  },
+  {
+    optionId: "asc",
     displayText: "Salary (High-Low)",
   },
   {
-    optionId: "PRICE_LOW",
+    optionId: "desc",
     displayText: "Salary (Low-High)",
   },
 ];
 
+// Array used to display salary filter
 const salaryFilters = [
   {
     salaryId: "2500000+",
     displayText: "25 Lakhs+",
+    value: 2500000,
   },
   {
     salaryId: "2000000+",
     displayText: "20 Lakhs+",
+    value: 2000000,
   },
   {
     salaryId: "1500000+",
     displayText: "15 Lakhs+",
+    value: 1500000,
   },
   {
     salaryId: "1000000+",
     displayText: "10 Lakhs+",
+    value: 1000000,
   },
   {
     salaryId: "500000+",
     displayText: "5 Lakhs+",
+    value: 500000,
   },
   {
-    salaryId: "300000",
+    salaryId: "300000+",
     displayText: "3 Lakhs+",
+    value: 300000,
   },
 ];
 
+// Array used to display location filter
 const locationFilters = [
+  {
+    locationId: "",
+    location: "No Specific Location",
+  },
+  {
+    locationId: "Pune",
+    location: "Pune",
+  },
   {
     locationId: "Hyderabad",
     location: "Hyderabad",
@@ -73,15 +97,12 @@ const locationFilters = [
     location: "Delhi",
   },
   {
-    locationId: "Pune",
-    location: "Pune",
-  },
-  {
     locationId: "Kolkata",
     location: "Kolkata",
   },
 ];
 
+// Array used to display job type filter
 const jobTypeFilters = [
   {
     jobTypeId: "FullTime",
@@ -105,7 +126,12 @@ const jobTypeFilters = [
   },
 ];
 
+// Array used to display skill filter
 const skillFilters = [
+  {
+    skillId: "",
+    skill: "No Specific Skill",
+  },
   {
     skillId: "C++",
     skill: "C++",
@@ -140,6 +166,7 @@ const skillFilters = [
   },
 ];
 
+// Array used to display education level filter
 const educationLevelFilters = [
   {
     educationLevelId: "Bachelor's Degree",
@@ -167,51 +194,61 @@ const educationLevelFilters = [
   },
 ];
 
+// Array used to display company filter
 const companyFilters = [
   {
-    companyId: "1",
+    companyId: "",
+    companyName: "No Specific Company",
+  },
+  {
+    companyId: "Oracle",
     companyName: "Oracle",
   },
   {
-    companyId: "2",
+    companyId: "ICS Consultancy Services",
     companyName: "ICS Consultancy Services",
   },
   {
-    companyId: "3",
+    companyId: "IBM",
     companyName: "IBM",
   },
   {
-    companyId: "4",
+    companyId: "Microsoft",
     companyName: "Microsoft",
   },
   {
-    companyId: "5",
+    companyId: "Deloitte",
     companyName: "Deloitte",
   },
   {
-    companyId: "6",
+    companyId: "Meta",
     companyName: "Meta",
   },
   {
-    companyId: "7",
+    companyId: "Swiggy",
     companyName: "Swiggy",
   },
   {
-    companyId: "8",
+    companyId: "Uber",
     companyName: "Uber",
   },
   {
-    companyId: "9",
+    companyId: "Dell",
     companyName: "Dell",
   },
 ];
 
 class Jobs extends Component {
+  //state is used to maintain all filters
   state = {
+    pageNo: 1,
     jobs: [],
+    renderJobs: [],
+    shortlistedJobs: [],
+    appliedJobs: [],
     searchInput: "",
     activeOptionId: "",
-    activeSalaryId: "",
+    activeSalaryId: "0+",
     activeLocationId: "",
     activeJobTypeId: "",
     activeSkillId: "",
@@ -221,10 +258,88 @@ class Jobs extends Component {
 
   componentDidMount() {
     this.getJobs();
+    this.getShortlistedJobs();
+    this.getAppliedJobs();
   }
 
+  //This function is used to get all shortlisted jobs of the user
+  getShortlistedJobs = async () => {
+    const { user } = this.props;
+    const apiUrl = `http://localhost:3004/shortlist?user_id=${user.uid}`;
+    const response = await fetch(apiUrl);
+    let fetchedData = await response.json();
+    if (fetchedData.length === 0) {
+      const apiUrl = `http://localhost:3004/shortlist`;
+      const userObject = {
+        user_id: user.uid,
+        shortlisted_ids: [],
+      };
+      const options = {
+        method: "POST",
+        body: JSON.stringify(userObject),
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      const response = await fetch(apiUrl, options);
+      const newResponse = await fetch(
+        `http://localhost:3004/shortlist?user_id=${user.uid}`
+      );
+      fetchedData = await newResponse.json();
+    }
+    this.setState({ shortlistedJobs: fetchedData[0].shortlisted_ids });
+  };
+
+  //This function is used to get all applied jobs of the user
+  getAppliedJobs = async () => {
+    const { user } = this.props;
+    const apiUrl = `http://localhost:3004/user_applications?user_id=${user.uid}`;
+    const response = await fetch(apiUrl);
+    let fetchedData = await response.json();
+    if (fetchedData.length === 0) {
+      const apiUrl = `http://localhost:3004/user_applications`;
+      const userObject = {
+        user_id: user.uid,
+        post_ids: [],
+      };
+      const options = {
+        method: "POST",
+        body: JSON.stringify(userObject),
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      const response = await fetch(apiUrl, options);
+      const newResponse = await fetch(
+        `http://localhost:3004/user_applications?user_id=${user.uid}`
+      );
+      fetchedData = await newResponse.json();
+    }
+    this.setState({ appliedJobs: fetchedData[0].post_ids });
+  };
+
+  //This function is used to get all jobs in database
   getJobs = async () => {
-    const apiUrl = "http://localhost:3004/jobs";
+    const {
+      searchInput,
+      activeSalaryId,
+      activeLocationId,
+      activeJobTypeId,
+      activeSkillId,
+      activeEducationLevelId,
+      activeCompanyId,
+      activeOptionId,
+    } = this.state;
+    let apiUrl = null;
+    if (activeOptionId === "") {
+      apiUrl = `http://localhost:3004/jobs?company_location_like=${activeLocationId}&job_title_like=${searchInput}&salary_gte=${parseInt(
+        activeSalaryId
+      )}&job_type_like=${activeJobTypeId}&skills_like=${activeSkillId}&education_level_like=${activeEducationLevelId}&company_name_like=${activeCompanyId}`;
+    } else {
+      apiUrl = `http://localhost:3004/jobs?company_location_like=${activeLocationId}&job_title_like=${searchInput}&salary_gte=${parseInt(
+        activeSalaryId
+      )}&job_type_like=${activeJobTypeId}&skills_like=${activeSkillId}&education_level_like=${activeEducationLevelId}&company_name_like=${activeCompanyId}&_sort=salary&_order=${activeOptionId}`;
+    }
     const response = await fetch(apiUrl);
     const fetchedData = await response.json();
     const updatedData = fetchedData.map((eachObject) => ({
@@ -242,60 +357,90 @@ class Jobs extends Component {
       skills: eachObject.skills,
       workExperience: eachObject.work_experience,
     }));
-    this.setState({ jobs: [...updatedData] });
+    updatedData.reverse(); //to show the newest jobs first
+    const renderJobs = updatedData.slice(0, 5);
+    this.setState({
+      jobs: [...updatedData],
+      renderJobs: renderJobs,
+      pageNo: 1,
+    });
   };
 
+  //This function is called when job search input is changed
   changeSearchInput = (value) => {
-    this.setState({ searchInput: value });
+    this.setState({ searchInput: value }, this.getJobs);
   };
 
   enterSearchInput = () => {
     this.getJobs();
   };
 
+  //The below functions are used to change the state when filters are changed
   clickSalaryId = (salaryId) => {
-    this.setState({ activeSalaryId: salaryId });
+    const { activeSalaryId } = this.state;
+    if (activeSalaryId === salaryId) {
+      this.setState({ activeSalaryId: "0+" }, this.getJobs);
+    } else {
+      this.setState({ activeSalaryId: salaryId }, this.getJobs);
+    }
   };
 
   changeLocation = (locationId) => {
-    this.setState({ activeLocationId: locationId });
+    this.setState({ activeLocationId: locationId }, this.getJobs);
   };
 
   changeJobType = (jobTypeId) => {
-    this.setState({ activeJobTypeId: jobTypeId });
+    const { activeJobTypeId } = this.state;
+    if (activeJobTypeId === jobTypeId) {
+      this.setState({ activeJobTypeId: "" }, this.getJobs);
+    } else {
+      this.setState({ activeJobTypeId: jobTypeId }, this.getJobs);
+    }
   };
 
   changeSkill = (skillId) => {
-    this.setState({ activeSkillId: skillId });
+    this.setState({ activeSkillId: skillId }, this.getJobs);
   };
 
   changeEducationLevel = (educationLevelId) => {
-    this.setState({ activeEducationLevelId: educationLevelId });
+    const { activeEducationLevelId } = this.state;
+    if (activeEducationLevelId === educationLevelId) {
+      this.setState({ activeEducationLevelId: "" }, this.getJobs);
+    } else {
+      this.setState({ activeEducationLevelId: educationLevelId }, this.getJobs);
+    }
   };
 
   changeCompany = (companyId) => {
-    this.setState({ activeCompanyId: companyId });
+    this.setState({ activeCompanyId: companyId }, this.getJobs);
   };
 
   changeOptionId = (optionId) => {
-    this.setState({ activeOptionId: optionId });
+    this.setState({ activeOptionId: optionId }, this.getJobs);
   };
 
+  //This function is used to clear all filters
   clearAllFilters = () => {
-    this.setState({
-      searchInput: "",
-      activeOptionId: "",
-      activeSalaryId: "",
-      activeLocationId: "",
-      activeJobTypeId: "",
-      activeSkillId: "",
-      activeEducationLevelId: "",
-      activeCompanyId: "",
-    });
+    this.setState(
+      {
+        searchInput: "",
+        activeOptionId: "",
+        activeSalaryId: "0+",
+        activeLocationId: "",
+        activeJobTypeId: "",
+        activeSkillId: "",
+        activeEducationLevelId: "",
+        activeCompanyId: "",
+      },
+      this.getJobs
+    );
   };
 
+  //This function is used to render Jobs
   renderAllJobs = () => {
-    const { activeOptionId, jobs } = this.state;
+    const { user } = this.props;
+    const { activeOptionId, renderJobs, shortlistedJobs, appliedJobs } =
+      this.state;
     return (
       <div className="jobs-container">
         <JobsHeader
@@ -304,9 +449,87 @@ class Jobs extends Component {
           changeOptionId={this.changeOptionId}
         />
         <div>
-          {jobs.map((eachJob) => (
-            <JobCard jobDetails={eachJob} key={eachJob.id} />
+          {renderJobs.map((eachJob) => (
+            <JobCard
+              getShortlistedJobs={this.getShortlistedJobs}
+              getAppliedJobs={this.getAppliedJobs}
+              isAppliedJob={appliedJobs.includes(eachJob.id)}
+              jobDetails={eachJob}
+              key={eachJob.id}
+              user={user}
+              isShortlisted={shortlistedJobs.includes(eachJob.id)}
+            />
           ))}
+        </div>
+      </div>
+    );
+  };
+
+  //This function is used to perform the pagination
+  onClickPageNumber = (pageNumber) => {
+    const { jobs } = this.state;
+    let renderJobs = null;
+    console.log(jobs.length, 5 * pageNumber + 1);
+    if (2 * pageNumber + 1 > jobs.length) {
+      renderJobs = jobs.slice(5 * (pageNumber - 1));
+    } else {
+      renderJobs = jobs.slice(5 * (pageNumber - 1), 5 * pageNumber);
+    }
+    this.setState({ pageNo: pageNumber, renderJobs: renderJobs });
+  };
+
+  //This function is used to change the page when next btn is clicked
+  onClickNextPage = () => {
+    const { pageNo } = this.state;
+    if (pageNo !== 6) {
+      this.onClickPageNumber(pageNo + 1);
+    }
+  };
+
+  //This function is used to change the page when prev btn is clicked
+  onClickPrevPage = () => {
+    const { pageNo } = this.state;
+    if (pageNo !== 1) this.onClickPageNumber(pageNo - 1);
+  };
+
+  //This function is used to display page numbers
+  renderPageNumbers = () => {
+    const { jobs, pageNo } = this.state;
+    const limit = 5;
+    let numberOfPagesRequired;
+    if (jobs.length % 2 === 0) {
+      numberOfPagesRequired = jobs.length / limit;
+    } else {
+      numberOfPagesRequired = jobs.length / limit + 1;
+    }
+    const pageNumbers = [];
+    for (let i = 1; i <= numberOfPagesRequired; i++) {
+      pageNumbers.push(i);
+    }
+
+    return (
+      <div className="page-numbers-container">
+        <div className="page-numbers">
+          <i className="fas fa-arrow-left" onClick={this.onClickPrevPage}></i>
+          {pageNumbers.map((eachNumber) => {
+            const clickPageNumber = () => {
+              this.onClickPageNumber(eachNumber);
+            };
+            const className =
+              eachNumber === pageNo
+                ? "page-number-btn active-page-number"
+                : "page-number-btn";
+            return (
+              <button
+                className={className}
+                key={eachNumber}
+                onClick={clickPageNumber}
+              >
+                {eachNumber}
+              </button>
+            );
+          })}
+          <i className="fas fa-arrow-right" onClick={this.onClickNextPage}></i>
         </div>
       </div>
     );
@@ -323,33 +546,39 @@ class Jobs extends Component {
       activeCompanyId,
     } = this.state;
     return (
-      <div className="all-jobs-section">
-        <FiltersGroup
-          searchInput={searchInput}
-          changeSearchInput={this.changeSearchInput}
-          enterSearchInput={this.enterSearchInput}
-          salaryFilters={salaryFilters}
-          clickSalaryId={this.clickSalaryId}
-          activeSalaryId={activeSalaryId}
-          locationFilters={locationFilters}
-          activeLocationId={activeLocationId}
-          changeLocation={this.changeLocation}
-          jobTypeFilters={jobTypeFilters}
-          activeJobTypeId={activeJobTypeId}
-          changeJobType={this.changeJobType}
-          skillFilters={skillFilters}
-          activeSkillId={activeSkillId}
-          changeSkill={this.changeSkill}
-          educationLevelFilters={educationLevelFilters}
-          activeEducationLevelId={activeEducationLevelId}
-          changeEducationLevel={this.changeEducationLevel}
-          companyFilters={companyFilters}
-          activeCompanyId={activeCompanyId}
-          changeCompany={this.changeCompany}
-          clearAllFilters={this.clearAllFilters}
-        />
-        {this.renderAllJobs()}
-      </div>
+      <>
+        <div className="all-jobs-section">
+          {
+            //This Component is used to render filters
+          }
+          <FiltersGroup
+            searchInput={searchInput}
+            changeSearchInput={this.changeSearchInput}
+            enterSearchInput={this.enterSearchInput}
+            salaryFilters={salaryFilters}
+            clickSalaryId={this.clickSalaryId}
+            activeSalaryId={activeSalaryId}
+            locationFilters={locationFilters}
+            activeLocationId={activeLocationId}
+            changeLocation={this.changeLocation}
+            jobTypeFilters={jobTypeFilters}
+            activeJobTypeId={activeJobTypeId}
+            changeJobType={this.changeJobType}
+            skillFilters={skillFilters}
+            activeSkillId={activeSkillId}
+            changeSkill={this.changeSkill}
+            educationLevelFilters={educationLevelFilters}
+            activeEducationLevelId={activeEducationLevelId}
+            changeEducationLevel={this.changeEducationLevel}
+            companyFilters={companyFilters}
+            activeCompanyId={activeCompanyId}
+            changeCompany={this.changeCompany}
+            clearAllFilters={this.clearAllFilters}
+          />
+          {this.renderAllJobs()}
+        </div>
+        {this.renderPageNumbers()}
+      </>
     );
   }
 }

@@ -1,9 +1,11 @@
+// This component is used to render form which is used to post the job details posted by the user.
 import "./index.css";
 
 import { Component } from "react";
 import PostCompanyDetails from "../PostCompanyDetails";
 import PostJobDetails from "../PostJobDetails";
 
+// This array is used to render role in hiring process input field.
 const roleInHiringProcessOptions = [
   {
     id: "1",
@@ -23,6 +25,7 @@ const roleInHiringProcessOptions = [
   },
 ];
 
+// This array is used to render job type input field.
 const jobTypeInput = [
   {
     jobTypeId: "1",
@@ -46,6 +49,7 @@ const jobTypeInput = [
   },
 ];
 
+// The below arrays are used to render respective input fileds.
 const skillsInput = [
   {
     skillId: "1",
@@ -121,6 +125,8 @@ class PostJobForm extends Component {
     activeEducationLevelId: "Bachelor's Degree",
     selectedSkills: [],
   };
+
+  // The below functions are used to change state when the fields are changed and validate the fileds.
 
   changeCompanyName = (companyName) => {
     this.setState({ companyName });
@@ -284,8 +290,10 @@ class PostJobForm extends Component {
     );
   };
 
+  //This function is called when the form is submitted
   submitForm = async (event) => {
     event.preventDefault();
+    const { user } = this.props;
     if (this.validateForm()) {
       const {
         companyName,
@@ -302,6 +310,7 @@ class PostJobForm extends Component {
         selectedSkills,
       } = this.state;
       const newJobObject = {
+        user_id: user.uid,
         company_name: companyName,
         company_description: companyDescription,
         company_location: companyLocation,
@@ -323,15 +332,17 @@ class PostJobForm extends Component {
           "Content-type": "application/json",
         },
       };
+      // making a post request to server
       const response = await fetch("http://localhost:3004/jobs", options);
       if (response.ok === true) {
         const { history } = this.props;
         alert(
           "Form submitted successfully, You will be redirected to home page..."
         );
-        history.push("/");
+        window.location = "/";
       }
     } else {
+      // updating error msgs
       this.validateJobTitle();
       this.validateJobDescription();
       this.validateRoleCategory();
@@ -340,6 +351,7 @@ class PostJobForm extends Component {
     }
   };
 
+  // remdering post job details form.
   render() {
     const {
       step,

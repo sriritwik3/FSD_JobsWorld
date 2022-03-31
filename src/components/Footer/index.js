@@ -1,3 +1,4 @@
+// This component is used to render footer of the website
 import React from "react";
 import FooterSupport from "../FooterSupport";
 import {

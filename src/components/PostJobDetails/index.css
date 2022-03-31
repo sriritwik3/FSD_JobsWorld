@@ -204,3 +204,71 @@
   margin-top: 100px;
   position: sticky;
 }
+
+
+
+.hover-button{
+  border-radius: 100px;
+  border-color: white;
+  box-shadow: none;
+  text-align: center;
+  background-color: rgb(252, 243, 243);
+  font-size: small;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.hover-button.jobtitle:hover::after{
+  content: " ex. Software developer";
+}
+
+.hover-button.role:hover::after{
+  content: " ex. SDE II";
+}
+.hover-button.job-description:hover::after{
+  content: " ex. a brief description about your company";
+}
+.hover-button.comp-location:hover::after{
+  content: " ex. Hyderabad";
+}
+.hover-button.Pay:hover::after{
+  content: " ex. salary you are willing to pay";
+}
+.hover-button.work-exp:hover::after{
+  content: " ex. 3 years";
+}
+.hover-button.jobtype:hover::after{
+  content: " ex. fresher";
+}
+
+.hover-button.ed-level:hover::after{
+  content: " ex. B.tech";
+}
+
+.hover-button.req-skills:hover::after{
+  content: " ex. python (select skills for job)";
+}
+
+.hover-button.year:hover::after{
+  content: " ex. 2019 to 2023";
+}
+
+.hover-button.jobTitle:hover::after{
+  content: " ex. ML intern";
+}
+
+.hover-button.company:hover::after{
+  content: " ex. flipkart";
+}
+
+.hover-button.jobcity:hover::after{
+  content: " ex. Hyderabad";
+}
+
+.hover-button.jobtime:hover::after{
+  content: " ex. 2020 to 2021";
+}
+
+.hover-button.desc:hover::after{
+  content: " ex. a brief description about you job experience";
+}

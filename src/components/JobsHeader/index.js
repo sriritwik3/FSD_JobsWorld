@@ -1,3 +1,4 @@
+// This component is used to render the jobs header.
 import "./index.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,6 +18,9 @@ const JobsHeader = (props) => {
       <div className="sort-by-container">
         <p className="sort-by-heading">Sort by</p>
         {filterIcon}
+        {
+          //rendering the sort options.
+        }
         <select
           className="sort-by-select"
           value={activeOptionId}

@@ -1,3 +1,4 @@
+// This component is used to reset the password of the user if forgotten.
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useHistory } from "react-router";

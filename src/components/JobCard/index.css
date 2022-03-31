@@ -110,6 +110,11 @@
   cursor: pointer;
 }
 
+.job-card-save-btn-filled{
+  color:gold;
+  cursor: pointer;
+}
+
 .job-card-save-btn:hover {
   color: gold;
 }

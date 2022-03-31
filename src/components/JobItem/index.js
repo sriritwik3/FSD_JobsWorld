@@ -1,3 +1,4 @@
+// This Component is used to render the whole details of a particular job.
 import "./index.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,8 +10,8 @@ import {
 
 const JobDetailedView = (props) => {
   const { jobDetails } = props;
+  // Collecting job details from the props.
   const {
-    // id,
     jobTitle,
     companyName,
     reviews = 7999,
@@ -31,7 +32,9 @@ const JobDetailedView = (props) => {
   const locationIcon = <FontAwesomeIcon icon={faMapMarkerAlt} />;
   const rupeeIcon = <FontAwesomeIcon icon={faRupeeSign} />;
 
+  // This function is used to render the footer of the card.
   const renderCardFooter = () => {
+    const { isAppliedJob, onClickApplyBtn } = props;
     return (
       <>
         <div className="job-summary-card-footer">
@@ -41,14 +44,29 @@ const JobDetailedView = (props) => {
               postings : {numberOfPostings}
             </p>
           </div>
-          <button className="job-detailed-view-apply-button" type="button">
-            Apply
-          </button>
+          {isAppliedJob ? (
+            <button
+              className="job-detailed-view-apply-button"
+              type="button"
+              onClick={onClickApplyBtn}
+            >
+              Discard Application
+            </button>
+          ) : (
+            <button
+              className="job-detailed-view-apply-button"
+              type="button"
+              onClick={onClickApplyBtn}
+            >
+              Apply
+            </button>
+          )}
         </div>
       </>
     );
   };
 
+  // Rendering the whole job details
   return (
     <>
       <div className="job-detailed-view-container">
