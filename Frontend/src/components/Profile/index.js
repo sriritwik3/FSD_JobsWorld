@@ -21,7 +21,7 @@ class Profile extends Component {
   }
 
   getUser = async () => {
-    const apiUrl = `http://localhost:5000/user`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/user`;
     const jwtToken = Cookies.get("jwt_token");
     const options = {
       method: "GET",
@@ -106,7 +106,7 @@ class Profile extends Component {
   deleteImage = async () => {
     const { user } = this.state;
     const jwtToken = Cookies.get("jwt_token");
-    const apiUrl = `http://localhost:5000/upload/${user._id}`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/upload/${user._id}`;
     const options = {
       method: "Delete",
       headers: {
@@ -123,7 +123,7 @@ class Profile extends Component {
 
     const { user } = this.state;
     const data = new FormData(event.target);
-    const apiUrl = `http://localhost:5000/upload/${user._id}`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/upload/${user._id}`;
     const options = {
       method: "POST",
       body: data,

@@ -21,6 +21,7 @@ import ApplicantResume from "./components/ApplicantResume";
 
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
+
 const App = () => {
   const history = useHistory();
   return (

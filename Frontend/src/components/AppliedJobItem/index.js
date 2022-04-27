@@ -17,7 +17,7 @@ class AppliedJobItem extends Component {
   onClickApplyBtn = async () => {
     const { jobDetails } = this.props;
     const { id } = jobDetails;
-    const apiUrl = "http://localhost:5000/jobsapplied";
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/jobsapplied`;
     const jwtToken = Cookies.get("jwt_token");
     const options = {
       method: "POST",

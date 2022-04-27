@@ -93,7 +93,7 @@ function Resume(props) {
 
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      const apiUrl = `http://localhost:5000/resume`;
+      const apiUrl = `${process.env.REACT_APP_SERVER_URL}/resume`;
       const jwtToken = Cookies.get("jwt_token");
       const options = {
         method: "POST",

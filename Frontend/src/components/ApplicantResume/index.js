@@ -18,7 +18,7 @@ class ResumeDetails extends Component {
     const { match } = this.props;
     const { params } = match;
     const { id } = params;
-    const apiUrl = `http://localhost:5000/resume/${id}`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/resume/${id}`;
     const response = await fetch(apiUrl);
     const fetchedData = await response.json();
     const { resume } = fetchedData;

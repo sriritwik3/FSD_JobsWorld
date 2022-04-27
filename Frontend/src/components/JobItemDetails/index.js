@@ -20,7 +20,7 @@ class JobItemDetails extends Component {
 
   //This function is used to get all applied jobs of the user.
   getAppliedJobs = async () => {
-    const apiUrl = `http://localhost:5000/jobsapplied`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/jobsapplied`;
     const jwtToken = Cookies.get("jwt_token");
     const options = {
       method: "GET",
@@ -40,8 +40,8 @@ class JobItemDetails extends Component {
     const { match } = this.props;
     const { params } = match;
     const { id } = params; // collecting the id from url
-
-    const apiUrl = `http://localhost:5000/jobs/${id}`;
+    
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/jobs/${id}`;
     const response = await fetch(apiUrl);
     const fetchedData = await response.json();
     const { details } = fetchedData;
@@ -67,7 +67,7 @@ class JobItemDetails extends Component {
   onClickApplyBtn = async () => {
     const { jobDetails } = this.state;
     const { id } = jobDetails;
-    const apiUrl = "http://localhost:5000/jobsapplied";
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/jobsapplied`;
     const jwtToken = Cookies.get("jwt_token");
     const options = {
       method: "POST",

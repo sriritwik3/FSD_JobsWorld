@@ -134,10 +134,10 @@ exports.getAllJobs = async (req, res) => {
 // This controller is called when the user requests for details of one job in the database
 exports.getJob = async (req, res) => {
   const {
-    id
+    user
   } = req.params;
   try {
-    const details = await Job.findById(id);
+    const details = await Job.findById(user);
     res.status(200).json({
       success: true,
       details,

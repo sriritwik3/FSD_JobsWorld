@@ -20,7 +20,7 @@ class Shortlist extends Component {
 
   // This function is used to get all jobs from db.
   getAllJobs = async () => {
-    const apiUrl = `http://localhost:5000/jobs`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/jobs`;
     const response = await fetch(apiUrl);
     const fetchedData = await response.json();
     const { jobs } = fetchedData;
@@ -29,7 +29,7 @@ class Shortlist extends Component {
 
   // This function is used to get the shortlisted jobs of the user
   getShortlistedJobs = async () => {
-    const apiUrl = `http://localhost:5000/shortlist`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/shortlist`;
     const jwtToken = Cookies.get("jwt_token");
     const options = {
       method: "GET",
@@ -46,7 +46,7 @@ class Shortlist extends Component {
 
   // This component is used to get applied jobs of the user.
   getAppliedJobs = async () => {
-    const apiUrl = `http://localhost:5000/jobsapplied`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/jobsapplied`;
     const jwtToken = Cookies.get("jwt_token");
     const options = {
       method: "GET",

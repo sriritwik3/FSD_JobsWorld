@@ -338,7 +338,7 @@ class PostJobForm extends Component {
         },
       };
       // making a post request to server
-      const response = await fetch("http://localhost:5000/jobs", options);
+      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/jobs`, options);
       if (response.ok === true) {
         const { history } = this.props;
         alert(

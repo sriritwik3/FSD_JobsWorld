@@ -10,7 +10,7 @@ export default function ProfileImage(props) {
 
     const { user } = props;
     const data = new FormData(event.target);
-    const apiUrl = `http://localhost:5000/upload/${user._id}`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/upload/${user._id}`;
 
     const options = {
       method: "POST",

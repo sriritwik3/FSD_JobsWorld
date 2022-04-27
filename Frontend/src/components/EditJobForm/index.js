@@ -139,7 +139,7 @@ class EditJobForm extends Component {
     const { params } = match;
     const { id } = params;
 
-    const apiUrl = `http://localhost:5000/jobs/edit/${id}`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/jobs/edit/${id}`;
     const response = await fetch(apiUrl);
     const fethcedData = await response.json();
     const { jobDetails } = fethcedData;
@@ -393,7 +393,7 @@ class EditJobForm extends Component {
       };
       // making a update request to server
       const response = await fetch(
-        `http://localhost:5000/jobs/edit/${id}`,
+        `${process.env.REACT_APP_SERVER_URL}/jobs/edit/${id}`,
         options
       );
       if (response.ok === true) {

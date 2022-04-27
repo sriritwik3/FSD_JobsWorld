@@ -15,7 +15,7 @@ class Applicant extends Component {
   //This function is used to get the resume of the applicant
   getResume = async () => {
     const { userId } = this.props;
-    const apiUrl = `http://localhost:5000/resume/${userId}`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/resume/${userId}`;
     const response = await fetch(apiUrl);
     const fetchedData = await response.json();
     const { resume } = fetchedData;

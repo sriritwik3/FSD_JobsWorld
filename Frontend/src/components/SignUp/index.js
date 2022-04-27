@@ -48,7 +48,7 @@ function Signup() {
   };
 
   const loginUser = async () => {
-    const apiUrl = "http://localhost:5000/login";
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/login`;
     const userObject = {
       email: employeLogin.email,
       password: employeLogin.password,
@@ -68,7 +68,7 @@ function Signup() {
 
   const register = async () => {
    
-    const apiUrl = "http://localhost:5000/signup";
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/signup`;
     const userObject = {
       user_name: employeSignUp.name,
       email: employeSignUp.email,

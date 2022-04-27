@@ -17,7 +17,7 @@ class ResumeDetails2 extends Component {
 
   // This function is used to get resume details of the user
   getresumeDetails = async () => {
-    const apiUrl = `http://localhost:5000/resume`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/resume`;
     const jwtToken = Cookies.get("jwt_token");
     const options = {
       method: "GET",
@@ -64,7 +64,7 @@ class ResumeDetails2 extends Component {
     const { resumeDetails } = this.state;
     const jwtToken = Cookies.get("jwt_token");
     alert("Resume deleted successfully");
-    fetch(`http://localhost:5000/resume/${resumeDetails.id}`, {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/resume/${resumeDetails.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

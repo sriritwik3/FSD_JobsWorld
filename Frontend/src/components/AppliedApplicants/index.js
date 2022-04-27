@@ -28,7 +28,7 @@ class Applicants extends Component {
     const { params } = match;
     const { id } = params;
 
-    const apiUrl = `http://localhost:5000/jobs/${id}/applicants`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/jobs/${id}/applicants`;
     const response = await fetch(apiUrl);
     let fetchedData = await response.json();
     const { applicant_ids } = fetchedData;

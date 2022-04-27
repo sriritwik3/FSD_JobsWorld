@@ -16,7 +16,7 @@ class ResumeDetails extends Component {
 
   // This function is used to get details of the resume of the user.
   getresumeDetails = async () => {
-    const apiUrl = `http://localhost:5000/resume`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/resume`;
     const jwtToken = Cookies.get("jwt_token");
     const options = {
       method: "GET",

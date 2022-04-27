@@ -16,7 +16,7 @@ class PostedJobItem extends Component {
   onClickDeleteBtn = async () => {
     const { jobDetails } = this.props;
     const { id } = jobDetails;
-    let apiUrl = `http://localhost:5000/jobs/${id}`;
+    let apiUrl = `${process.env.REACT_APP_SERVER_URL}/jobs/${id}`;
     const options = {
       method: "DELETE",
     };

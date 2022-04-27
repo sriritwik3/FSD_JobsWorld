@@ -18,7 +18,7 @@ class AppliedJobs extends Component {
 
   // This function is used to get all the jobs in DB
   getAllJobs = async () => {
-    const apiUrl = `http://localhost:5000/jobs`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/jobs`;
     const response = await fetch(apiUrl);
     const fetchedData = await response.json();
     const { jobs } = fetchedData;
@@ -27,7 +27,7 @@ class AppliedJobs extends Component {
 
   // This function is used to get the jobs which are applied by the user
   getAppliedJobs = async () => {
-    const apiUrl = `http://localhost:5000/jobsapplied`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/jobsapplied`;
     const jwtToken = Cookies.get("jwt_token");
     const options = {
       method: "GET",

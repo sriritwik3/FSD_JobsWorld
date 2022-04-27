@@ -18,7 +18,7 @@ class PostedJobs extends Component {
   //This function is used to get all the jobs which are posted by user.
   getAllJobs = async () => {
     const jwtToken = Cookies.get("jwt_token");
-    const apiUrl = `http://localhost:5000/user-postings`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/user-postings`;
     const options = {
       method: "GET",
       headers: {

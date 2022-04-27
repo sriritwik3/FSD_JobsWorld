@@ -16,7 +16,7 @@ class EditResume extends Component {
   getresumeDetails = async () => {
     const jwtToken = Cookies.get("jwt_token");
 
-    const apiUrl = `http://localhost:5000/resume/edit`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/resume/edit`;
     const options = {
       method: "GET",
       headers: {

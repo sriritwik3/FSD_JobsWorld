@@ -265,7 +265,7 @@ class Jobs extends Component {
 
   //This function is used to get all shortlisted jobs of the user
   getShortlistedJobs = async () => {
-    const apiUrl = `http://localhost:5000/shortlist`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/shortlist`;
     const jwtToken = Cookies.get("jwt_token");
     const options = {
       method: "GET",
@@ -282,7 +282,7 @@ class Jobs extends Component {
 
   //This function is used to get all applied jobs of the user
   getAppliedJobs = async () => {
-    const apiUrl = `http://localhost:5000/jobsapplied`;
+    const apiUrl = `${process.env.REACT_APP_SERVER_URL}/jobsapplied`;
     const jwtToken = Cookies.get("jwt_token");
     const options = {
       method: "GET",
@@ -311,11 +311,11 @@ class Jobs extends Component {
     } = this.state;
     let apiUrl;
     if (activeOptionId === "") {
-      apiUrl = `http://localhost:5000/jobs?company_location=${activeLocationId}&job_title=${searchInput}&salary=${parseInt(
+      apiUrl = `${process.env.REACT_APP_SERVER_URL}/jobs?company_location=${activeLocationId}&job_title=${searchInput}&salary=${parseInt(
         activeSalaryId
       )}&job_type=${activeJobTypeId}&skills=${activeSkillId}&education_level=${activeEducationLevelId}&company_name=${activeCompanyId}`;
     } else {
-      apiUrl = `http://localhost:5000/jobs?company_location=${activeLocationId}&job_title=${searchInput}&salary=${parseInt(
+      apiUrl = `${process.env.REACT_APP_SERVER_URL}/jobs?company_location=${activeLocationId}&job_title=${searchInput}&salary=${parseInt(
         activeSalaryId
       )}&job_type=${activeJobTypeId}&skills=${activeSkillId}&education_level=${activeEducationLevelId}&company_name=${activeCompanyId}&sort=${activeOptionId}`;
     }

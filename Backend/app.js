@@ -11,7 +11,8 @@ const res = require("express/lib/response");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
-const port = 4000;
+const port_morgan = 4000 || process.env.PORT_MORGAN;
+
 const morgan = require("morgan");
 const fs = require("fs");
 const path = require("path");
@@ -30,8 +31,8 @@ app.use(morgan('[:date[clf]] - ":method :url HTTP/:http-version" :status',{ stre
 app.get("/morgan", function (req, res) {
   res.send("Morgan Logger..");
 });
-app.listen(port, () => {
-  console.log("Morgan is running in http://localhost:4000");
+app.listen(port_morgan, () => {
+  console.log(`Morgan is running on ${port_morgan}!!!`);
 });
 
 app.use(cors());
@@ -58,8 +59,8 @@ app.use("/", shortlist);
 app.use("/", resume);
 app.use("/", user);
 
-const port_server = 5000 || process.env.PORT;
+const port_server = 5000 || process.env.PORT_SERVER;
 
 const server = app.listen(port_server, (req, res) => {
-  console.log(`Server started on 5000!!!`);
+  console.log(`Server started on ${port_server}!!!`);
 });
