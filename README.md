@@ -1,6 +1,6 @@
 ﻿# Jobs World
 
-This is a **Full Stack Development** Project is mainly focused on frontend. This is to demonstrate what we learnt in the course.
+This is a **Full Stack Development** Group Project . This is to demonstrate what we learnt in the Course - Full Stack Development.
 
 ## Problem Statement
 - These days there are many skilled people who are looking for jobs which showcase their skills but due to lack of awareness to find jobs they could not get desired job. And many employees lost their jobs due to pandemic.
